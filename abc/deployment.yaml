@@ -1,0 +1,15 @@
+apiVersion: ai.sap.com/v1alpha1
+kind: Scenario
+metadata:
+  name: hello-world-docker-scenario
+spec:
+  steps:
+    - name: print-hello
+      image: docker.io/shirke0706/hello-world-app:latest
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "200m"
+          memory: "256Mi"
