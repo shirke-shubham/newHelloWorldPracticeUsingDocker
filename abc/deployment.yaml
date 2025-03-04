@@ -13,7 +13,7 @@
 #        - |
 #         print("Hello from Intellect Bizware Pvt Ltd") 
 
-apiVersion: ai.sap.com/v1alpha1
+apiVersion: ai.sap.com/v1alpha1 
 kind: Scenario
 metadata:
   name: hello-world-docker-scenario
