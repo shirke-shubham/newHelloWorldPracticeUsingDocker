@@ -28,15 +28,44 @@
 #         - |
 #           print("Hello from Intellect Bizware Pvt Ltd") 
 
+# apiVersion: argoproj.io/v1alpha1
+# kind: WorkflowTemplate
+# metadata:
+#   name: deployment # executable id, must be unique across all your workflows (YAML files), please modify this to any value (e.g. code-pipeline-12345) if you are not the only user of your SAP AI Core instance.
+#   annotations:
+#     scenarios.ai.sap.com/description: "Hello World Print In Logs"
+#     scenarios.ai.sap.com/name: "Code-Hello World (Tutorial)"
+#     executables.ai.sap.com/description: "Hello World Print"
+#     executables.ai.sap.com/name: "demo (Sklearn Example)"
+#   labels:
+#     scenarios.ai.sap.com/id: "learning-code"
+#     ai.sap.com/version: "1.0"
+# spec:
+#   imagePullSecrets:
+#     - name: credstutorialrepo # your docker registry secret
+#   entrypoint: mypipeline
+#   templates:
+#   - name: mypipeline
+#     steps:
+#     - - name: mypredictor
+#         template: mycodeblock1
+
+#   - name: mycodeblock1
+#     container:
+#       image: docker.io/shirke0706/hello-world-app:01 # Your docker image name
+#       command: ["/bin/sh", "-c"]
+#       args:
+#         - "python /app/src/main.py" 
+
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: deployment # executable id, must be unique across all your workflows (YAML files), please modify this to any value (e.g. code-pipeline-12345) if you are not the only user of your SAP AI Core instance.
   annotations:
     scenarios.ai.sap.com/description: "Hello World Print In Logs"
-    scenarios.ai.sap.com/name: "Code-Hello World (Tutorial)"
-    executables.ai.sap.com/description: "Hello World Print"
-    executables.ai.sap.com/name: "demo (Sklearn Example)"
+    scenarios.ai.sap.com/name: "Hello World new"
+    executables.ai.sap.com/description: "Hello World Print new"
+    executables.ai.sap.com/name: "New Docker Image"
   labels:
     scenarios.ai.sap.com/id: "learning-code"
     ai.sap.com/version: "1.0"
@@ -45,15 +74,12 @@ spec:
     - name: credstutorialrepo # your docker registry secret
   entrypoint: mypipeline
   templates:
-  - name: mypipeline
-    steps:
-    - - name: mypredictor
-        template: mycodeblock1
 
   - name: mycodeblock1
     container:
-      image: docker.io/shirke0706/hello-world-app:01 # Your docker image name
+      image: docker.io/shirke0706/hello-world-new-app:01 # Your docker image name
       command: ["/bin/sh", "-c"]
       args:
         - "python /app/src/main.py" 
+
 
